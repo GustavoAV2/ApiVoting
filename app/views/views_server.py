@@ -1,11 +1,16 @@
 from flask import jsonify, request, Blueprint
 from app.actions.actions_server import get_server_by_port, disconnect_server, connect_server, create_server, \
-    finish_votes, ready_user, started_votes, voted
+    finish_votes, ready_user, started_votes, voted, status
 
 app_server = Blueprint('app.server', __name__)
 
 
-@app_server.route('/get-server/<port>')
+@app_server.route("/", methods=['GET'])
+def index():
+    return status()
+
+
+@app_server.route('/get-server/<port>', methods=['GET'])
 def send_server(port: str):
     return jsonify(get_server_by_port(port).serialize()), 200
 

@@ -58,3 +58,12 @@ def finish_votes(port: str) -> Server:
     actual_server = scenery.get_server_by_port(port)
     actual_server.finish_server()
     return actual_server
+
+
+def status() -> str:
+    num_servers = len(scenery.servers)
+    template = """<div style="text-align:center;">
+                    <h1>Quick Vote</h1><br>
+                    <h2>Servers on: {num_servers}</h2>
+                  </div>""".format(num_servers=num_servers)
+    return template
