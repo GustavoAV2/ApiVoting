@@ -58,5 +58,3 @@ def finish_votes(port: str) -> Server:
     actual_server = scenery.get_server_by_port(port)
     actual_server.finish_server()
     return actual_server
-
-
